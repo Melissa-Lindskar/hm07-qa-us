@@ -1,3 +1,4 @@
+const config = require("../config");
 // Test for fetching details of a kit by ID and checking the HTTP status
 test('Should return 200 OK when fetching details of a kit by ID', async () => {
     let response;
