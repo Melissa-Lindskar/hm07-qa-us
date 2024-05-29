@@ -20,9 +20,11 @@ test('Should correctly parse the response when fetching details of a kit', async
             method: 'GET'
         });
         const data = await response.json();
-        expect(data.ok).toBeTruthy(); // Verify that the response includes the 'ok' property
+        expect(data).toHaveProperty('ok'); // Verify that the 'ok' property exists in the response
+        expect(data.ok).toBeTruthy(); // Additionally, verify that the 'ok' property is true
     } catch (error) {
         console.error('Error parsing fetch kit response:', error);
     }
 });
+
 
