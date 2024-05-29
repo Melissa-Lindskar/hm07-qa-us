@@ -16,7 +16,7 @@ Before running the tests, you need to set the base URL for the API endpoints in 
    ```javascript
    const API_URL = 'https://example.com/api';
 
-How to Run Tests
+## How to Run Tests
 
 To run the tests for the Urban Grocers API, follow these steps:
 
@@ -34,14 +34,18 @@ npm install
 
 4. Run the tests using npm:
 
-npm test
+npm test 
 
-Adding README.md to Your Project
+Alternatively, you can use Jest directly if you have it globally installed
+
+npx jest
+
+## Adding README.md to Your Project
 
 To add this README.md to your project:
 
-Create a new file in the root directory of your project and name it README.md.
-Copy and paste the content from the template above into the file.
-Customize the text according to your specific needs and details about the project.
-Save the file and use a version control system like Git to track changes and push them to your repository.
+1. Create a new file in the root directory of your project and name it README.md.
+2. Copy and paste the content from the template above into the file.
+3. Customize the text according to your specific needs and details about the project.
+4. Save the file and use a version control system like Git to track changes and push them to your repository.
 
