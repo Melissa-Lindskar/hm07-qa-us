@@ -1,6 +1,6 @@
 const config = require('../config');
 
-// Test for checking the response status code when deleting a kit by ID. 
+// Test for checking the response status code when deleting a kit by ID. Please reviewer I dont understand your feedback "Please refer to the comments in your code, i cant find your comments like the code snippet you showed. Please let me know where to find it. I did open the test folder here in VS code, but do not see as off no
 test('Should return 200 OK when deleting a kit with id 7', async () => {
     let response;
     try {

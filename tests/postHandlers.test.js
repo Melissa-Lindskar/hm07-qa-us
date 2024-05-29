@@ -1,6 +1,6 @@
 const config = require('../config');
 
-// Test for checking the response status code for "/warehouses/check" Please reviewer I dont understand your feedback "Please refer to the comments in your code"
+// Test for checking the response status code for "/warehouses/check" Please reviewer I dont understand your feedback "Please refer to the comments in your code, i cant find your comments like the code snippet you showed. Please let me know where to find it. I did open the test folder here in VS code, but do not see as off now"
 test('Should return 200 OK when posting to /warehouses/check', async () => {
     let response;
     try {
