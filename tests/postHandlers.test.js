@@ -1,45 +1,42 @@
 const config = require('../config');
 
-// Test for checking the response status code for "/warehouses/check" Please reviewer I dont understand your feedback "Please refer to the comments in your code, i cant find your comments like the code snippet you showed. Please let me know where to find it. I did open the test folder here in VS code, but do not see as off now"
-test('Should return 200 OK when posting to /warehouses/check', async () => {
-    let response;
+const requestBody = {
+  "id": 1,
+  "userId": 1,
+  "productsList": [
+    {
+      "id": 5,
+      "quantity": 2
+    }
+  ]
+}
+
+test('Should return 201 status code', async () => {
+    let actualStatusCode;
     try {
-        const requestBody = {
-            products: [
-                { id: 5, quantity: 1 },
-                { id: 4, quantity: 5 }
-            ]
-        };
-        response = await fetch(`${config.API_URL}/warehouses/check`, {
+        const response = await fetch(`${config.API_URL}/api/v1/orders`, {
             method: 'POST',
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify(requestBody)
         });
-        expect(response.status).toBe(200);
+        actualStatusCode = response.status;
     } catch (error) {
-        console.error('Error checking availability:', error);
+        console.error(error);
     }
+    expect(actualStatusCode).toBe(201);
 });
 
-// Test for parsing the response correctly for "/warehouses/check"
 test('Should correctly parse the response for /warehouses/check', async () => {
-    let response;
+    let actualResponseBody;
     try {
-        const requestBody = {
-            products: [
-                { id: 5, quantity: 1 },
-                { id: 4, quantity: 5 }
-            ]
-        };
-        response = await fetch(`${config.API_URL}/warehouses/check`, {
+        const response = await fetch(`${config.API_URL}/api/v1/orders`, {
             method: 'POST',
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify(requestBody)
         });
-        const data = await response.json();
-        expect(data.hasOwnProperty('Everything You Need')).toBeTruthy(); 
-        expect(data.hasOwnProperty('Food City')).toBeTruthy();
+        actualResponseBody = await response.json();
     } catch (error) {
-        console.error('Error parsing check availability response:', error);
+        console.error(error);
     }
+    expect(actualResponseBody["courierService"]).toBe("Order and Go");
 });

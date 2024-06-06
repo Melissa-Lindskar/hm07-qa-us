@@ -1,28 +1,35 @@
-const config = require('../config');
+const config = require("../config");
 
-// Test for checking the response status code when deleting a kit by ID. Please reviewer I dont understand your feedback "Please refer to the comments in your code, i cant find your comments like the code snippet you showed. Please let me know where to find it. I did open the test folder here in VS code, but do not see as off no
-test('Should return 200 OK when deleting a kit with id 7', async () => {
+test('Should create a kit and return the correct status code', async () => {
+    const requestBody = {
+        name: "Test Kit", quantity: 10
+    };
+
     let response;
     try {
-        response = await fetch(`${config.API_URL}/kits/7`, {
-            method: 'DELETE'
+        response = await fetch(`${config.API_URL}/kits`, {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify(requestBody)
         });
-        expect(response.status).toBe(200);
+        const responseData = await response.json(); 
+        expect(response.status).toBe(201);
+        expect(responseData.ok).toBe(true);  
     } catch (error) {
-        console.error('Error deleting kit:', error);
+        console.error('Error creating kit:', error);
     }
 });
 
-// Test for parsing the response correctly when deleting a kit by ID
-test('Should correctly parse the response when deleting a kit with id 7', async () => {
+test('Should delete a kit and return the correct status code', async () => {
     let response;
     try {
-        response = await fetch(`${config.API_URL}/kits/7`, {
+        response = await fetch(`${config.API_URL}/kits/7`, {  
             method: 'DELETE'
         });
-        const data = await response.json();
-        expect(data.ok).toBeTruthy();
+        expect(response.status).toBe(200);
+        const responseData = await response.json();  
+        expect(responseData.ok).toBe(true);
     } catch (error) {
-        console.error('Error parsing delete kit response:', error);
+        console.error('Error deleting kit:', error);
     }
 });
